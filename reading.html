@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading — [INSERT MY NAME]</title>
+<meta name="description" content="A curated reading list from [INSERT MY NAME] — books currently being read, influential texts, and research reading.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__name">[Insert My Name]</span>
+      <span class="site-brand__tag">Libraries · Archives · History</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li><a class="site-nav__link" href="index.html">Home</a></li>
+        <li><a class="site-nav__link" href="about.html">About</a></li>
+        <li><a class="site-nav__link" href="writing.html">Writing</a></li>
+        <li><a class="site-nav__link" href="projects.html">Projects</a></li>
+        <li><a class="site-nav__link" href="experience.html">Experience</a></li>
+        <li><a class="site-nav__link" href="reading.html" aria-current="page">Reading</a></li>
+        <li><a class="site-nav__link" href="cv.html">CV</a></li>
+        <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Reading</p>
+      <h1>A working reading list</h1>
+      <p class="lede">Books I'm currently reading, texts that have shaped my thinking, and reading connected to ongoing research — kept short and curated rather than exhaustive.</p>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="wrap">
+      <p class="editnote"><strong>How to use this page:</strong> edit the <code>BOOKS</code> array in <code>/js/data.js</code>. Each entry needs a title, author, a short personal note on why it's here, and a one- or two-word tag (e.g. "Currently Reading", "Influential"). Keep the list intentional — a handful of books that matter, not a running log of everything you read.</p>
+      <div class="book-grid" id="book-grid"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div>
+      <div class="site-footer__mark">[Insert My Name]</div>
+      <p class="site-footer__tag">Historian, aspiring academic librarian, and student of libraries, archives, and museums.</p>
+    </div>
+    <nav class="site-footer__links" aria-label="Footer">
+      <a href="about.html">About</a>
+      <a href="writing.html">Writing</a>
+      <a href="projects.html">Projects</a>
+      <a href="cv.html">CV</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__bottom">
+    © <span id="year"></span> [Insert My Name]. Built as an evolving professional record.
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience — [INSERT MY NAME]</title>
+<meta name="description" content="Academic, volunteer, and professional experience of [INSERT MY NAME] in libraries, archives, museums, and research.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__name">[Insert My Name]</span>
+      <span class="site-brand__tag">Libraries · Archives · History</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li><a class="site-nav__link" href="index.html">Home</a></li>
+        <li><a class="site-nav__link" href="about.html">About</a></li>
+        <li><a class="site-nav__link" href="writing.html">Writing</a></li>
+        <li><a class="site-nav__link" href="projects.html">Projects</a></li>
+        <li><a class="site-nav__link" href="experience.html" aria-current="page">Experience</a></li>
+        <li><a class="site-nav__link" href="reading.html">Reading</a></li>
+        <li><a class="site-nav__link" href="cv.html">CV</a></li>
+        <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Experience</p>
+      <h1>Where I've worked &amp; volunteered</h1>
+      <p class="lede">Jobs, internships, volunteer positions, and student involvement — listed chronologically, most recent first.</p>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="wrap">
+      <p class="editnote"><strong>How to use this page:</strong> edit the <code>EXPERIENCE</code> array in <code>/js/data.js</code>. Each entry needs a role, organization, date range, and a one- to two-sentence description. Nothing here is invented — replace every entry with your real experience as you gain it; leave the section sparse rather than padded until then.</p>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div>
+      <div class="site-footer__mark">[Insert My Name]</div>
+      <p class="site-footer__tag">Historian, aspiring academic librarian, and student of libraries, archives, and museums.</p>
+    </div>
+    <nav class="site-footer__links" aria-label="Footer">
+      <a href="about.html">About</a>
+      <a href="writing.html">Writing</a>
+      <a href="projects.html">Projects</a>
+      <a href="cv.html">CV</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__bottom">
+    © <span id="year"></span> [Insert My Name]. Built as an evolving professional record.
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
