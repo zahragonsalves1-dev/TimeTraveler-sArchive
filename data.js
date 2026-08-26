@@ -151,28 +151,60 @@ const PROJECTS = [
 
 const EXPERIENCE = [
   {
-    role: "Position Title — Placeholder",
-    org: "Organization / Department, Temple University",
-    date: "Month Year – Present",
+    role: "Home Health Aide",
+    org: "Halal Care Home Care Services LLC — Philadelphia, PA",
+    date: "January 2026 – Present",
     sortDate: "2026-01",
     description:
-      "Placeholder description of responsibilities and the kind of library, archival, museum, or research work involved. Replace with real, specific detail once available."
+      "Provide direct, compassionate care to clients — monitoring health changes, assisting with daily living activities, and coordinating with healthcare professionals to support each client's wellbeing."
   },
   {
-    role: "Position Title — Placeholder",
-    org: "Organization Name",
-    date: "Month Year – Month Year",
-    sortDate: "2025-06",
+    role: "Volunteer Gardener",
+    org: "Philadelphia Masjid Inc — Philadelphia, PA",
+    date: "April 2025 – September 2025",
+    sortDate: "2025-04",
     description:
-      "Placeholder description. Keep entries concise — one or two sentences on what you did and what it involved."
+      "Coordinated volunteer efforts and sustainable practices for a community garden, and organized groups to deliver harvested produce to local food banks and shelters."
   },
   {
-    role: "Position Title — Placeholder",
-    org: "Organization Name",
-    date: "Month Year – Month Year",
-    sortDate: "2024-09",
+    role: "Teacher's Assistant",
+    org: "Mee-Mom's Quality Plus Daycare — Philadelphia, PA",
+    date: "May 2024 – May 2025",
+    sortDate: "2024-05",
     description:
-      "Placeholder description of an earlier volunteer, research, or student role relevant to libraries, archives, museums, or education."
+      "Supported children's individual learning needs, assisted in preparing educational materials, and built positive relationships with students, parents, and fellow staff."
+  },
+  {
+    role: "Children's Library Assistant",
+    org: "Free Library of Philadelphia — Philadelphia, PA",
+    date: "March 2023 – September 2024",
+    sortDate: "2023-03",
+    description:
+      "Assisted patrons in locating resources and navigating library systems, processed and shelved materials according to classification standards, and supported staff in planning public events."
+  },
+  {
+    role: "Sales Associate",
+    org: "Sadika Fashions — Philadelphia, PA",
+    date: "July 2023 – April 2024",
+    sortDate: "2023-07",
+    description:
+      "Assisted customers in selecting clothing and accessories, organized merchandise displays, and processed transactions at the point of sale."
+  },
+  {
+    role: "Event Coordinator",
+    org: "National MS Society — Philadelphia, PA",
+    date: "July 2020 – September 2020",
+    sortDate: "2020-07",
+    description:
+      "Developed event timelines, managed vendor relationships, and provided on-site support — collaborating with volunteers to ensure smooth day-of execution."
+  },
+  {
+    role: "Secretary",
+    org: "Philadelphia Youth Network, Inc. — Philadelphia, PA",
+    date: "May 2020 – September 2020",
+    sortDate: "2020-05",
+    description:
+      "Managed scheduling and meeting coordination for staff and stakeholders, maintained organized records, and assisted in preparing reports and presentations for program updates."
   }
 ];
 

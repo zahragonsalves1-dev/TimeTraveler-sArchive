@@ -3,23 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — [INSERT MY NAME]</title>
-<meta name="description" content="Biography, academic background, and professional interests of [INSERT MY NAME], undergraduate historian and aspiring academic librarian.">
+<title>About — The Time Traveler's Archive</title>
+<meta name="description" content="Biography, academic background, and professional interests of Zahra Gonsalves, undergraduate historian and aspiring research librarian.">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="room-about">
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a class="site-brand" href="index.html">
-      <span class="site-brand__name">[Insert My Name]</span>
-      <span class="site-brand__tag">Libraries · Archives · History</span>
+    <a class="site-brand" href="home.html">
+      <span class="site-brand__name">Zahra Gonsalves</span>
+      <span class="site-brand__title">The Time Traveler's Archive</span>
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html">Home</a></li>
+        <li><a class="site-nav__link" href="home.html">Home</a></li>
         <li><a class="site-nav__link" href="about.html" aria-current="page">About</a></li>
         <li><a class="site-nav__link" href="writing.html">Writing</a></li>
         <li><a class="site-nav__link" href="projects.html">Projects</a></li>
@@ -38,7 +39,7 @@
     <div class="wrap">
       <p class="eyebrow">About</p>
       <h1>Biography &amp; background</h1>
-      <p class="lede">A brief account of who I am, what I study, and where I hope this work leads.</p>
+      <p class="lede">A brief account of who I am, what I study, and my future career goals.</p>
     </div>
   </section>
 
@@ -46,40 +47,30 @@
     <div class="wrap bio-grid">
       <div>
         <div class="headshot-frame">
-          Professional headshot placeholder<br>— replace with a portrait photo, ideally simple and well-lit —
+          <img class="headshot-photo" src="assets/images/headshot.jpg" alt="Portrait of Zahra Gonsalves.">
         </div>
-        <p class="editnote">Add your photo by placing an image file in <code>/assets/images/</code> and swapping this placeholder <code>div</code> for an <code>&lt;img&gt;</code> tag with descriptive alt text.</p>
       </div>
       <div>
-        <p class="editnote"><strong>Placeholder biography.</strong> Replace the text below with your own — written in the first person, roughly 3–5 short paragraphs. The draft here reflects the interests described in your brief; it does not claim any accomplishments, publications, or experience you haven't had.</p>
+        <p>I am an undergraduate history student at Temple University where my coursework centers
+        on Islamic history and historical preservation. My interest in history has pointed me
+        toward the institutions that preserve it: museums, archives, and libraries.</p>
 
-        <p>I am an undergraduate History student at Temple University, where my coursework centers
-        on [insert areas of historical focus — e.g. a region, period, or theme]. My interest in
-        history has increasingly pointed me toward the institutions that make historical and
-        cultural knowledge possible to study in the first place: libraries, archives, and museums.</p>
+        <p>My long term goal is to become a research librarian working at the intersection of
+        historical scholarship, archival stewardship, and public access to knowledge. I am
+        especially drawn to understanding the role that universities, museums,
+        archives and libraries play in making information more accessible.</p>
 
-        <p>My long-term goal is to become an academic librarian at a research university, working
-        at the intersection of historical scholarship, archival stewardship, and public access to
-        knowledge. I am drawn especially to special collections and archives work, to the role
-        university museums play in research and teaching, and to questions of information and
-        community literacy more broadly.</p>
-
-        <p>I also hold a particular, long-standing interest in Islamic libraries, archives, and
-        museums, and in the preservation of Islamic cultural heritage more generally. Over time,
-        I hope to develop real expertise in this area — and, eventually, to contribute to building
-        an institution devoted to it.</p>
-
-        <p>This website exists to document that path honestly as it happens: coursework, research,
-        volunteer experience, and writing, gathered in one place rather than scattered across a
-        resume that only tells part of the story.</p>
+        <p>I also hold a longstanding interest in Islamic history and the preservation of Islamic
+        cultural heritage. Over time I hope to develop real expertise in this area and to
+        eventually build an institution devoted to it.</p>
 
         <h2 style="font-size: var(--step-2); margin-top:2rem;">Research &amp; professional interests</h2>
         <dl class="fact-list">
           <div class="fact-row"><dt>Fields</dt><dd>Academic libraries, archives &amp; special collections, museum studies, history</dd></div>
           <div class="fact-row"><dt>Focus</dt><dd>Cultural preservation, information literacy, community education</dd></div>
-          <div class="fact-row"><dt>Special Interest</dt><dd>Islamic libraries, archives, museums &amp; cultural heritage</dd></div>
+          <div class="fact-row"><dt>Special Interest</dt><dd>Islamic history, libraries, archives, museums &amp; cultural heritage</dd></div>
           <div class="fact-row"><dt>Institution</dt><dd>Temple University — B.A. in History (in progress)</dd></div>
-          <div class="fact-row"><dt>Long-Term Goal</dt><dd>Academic librarianship at an R1 research university</dd></div>
+          <div class="fact-row"><dt>Long-Term Goal</dt><dd>Career in research librarianship and the establishment of an Islamic library</dd></div>
         </dl>
       </div>
     </div>
@@ -90,8 +81,8 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <div>
-      <div class="site-footer__mark">[Insert My Name]</div>
-      <p class="site-footer__tag">Historian, aspiring academic librarian, and student of libraries, archives, and museums.</p>
+      <div class="site-footer__mark">Zahra Gonsalves</div>
+      <p class="site-footer__tag">Historian, future research librarian, and cultural heritage specialist.</p>
     </div>
     <nav class="site-footer__links" aria-label="Footer">
       <a href="about.html">About</a>
@@ -99,10 +90,11 @@
       <a href="projects.html">Projects</a>
       <a href="cv.html">CV</a>
       <a href="contact.html">Contact</a>
+      <a href="index.html" class="entrance-link">Entrance</a>
     </nav>
   </div>
   <div class="wrap site-footer__bottom">
-    © <span id="year"></span> [Insert My Name]. Built as an evolving professional record.
+    © <span id="year"></span> Zahra Gonsalves. Built as an evolving professional record.
   </div>
 </footer>
 

@@ -30,6 +30,40 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
+// Give each category a consistent color from the palette, so the same
+// topic always reads the same way across the site. Falls back by
+// rotating through the palette for any category not listed here.
+const CATEGORY_PALETTE = ["sage", "gold", "terracotta", "rose", "teal"];
+const CATEGORY_COLOR_MAP = {
+  "Library Science": "teal",
+  "Archives": "terracotta",
+  "Museums": "rose",
+  "Islamic Heritage": "gold",
+  "Historical Research": "terracotta",
+  "Digital Humanities": "teal",
+  "Literacy & Education": "sage",
+  "Student Involvement": "gold"
+};
+function colorForCategory(category) {
+  if (CATEGORY_COLOR_MAP[category]) return CATEGORY_COLOR_MAP[category];
+  let hash = 0;
+  for (let i = 0; i < category.length; i++) hash = (hash * 31 + category.charCodeAt(i)) >>> 0;
+  return CATEGORY_PALETTE[hash % CATEGORY_PALETTE.length];
+}
+
+function cardTemplate(item, opts) {
+  const color = colorForCategory(item.category);
+  const rightMeta = opts.footerRight(item);
+  return (
+    '<a class="catalog-card catalog-card--' + color + '" href="' + escapeHTML(item.href) + '">' +
+      '<div class="catalog-card__meta"><span class="catalog-card__id">' + escapeHTML(item.id) + '</span><span>' + escapeHTML(item.date) + '</span></div>' +
+      '<h3 class="catalog-card__title">' + escapeHTML(item.title) + '</h3>' +
+      '<p class="catalog-card__desc">' + escapeHTML(item.description) + '</p>' +
+      '<div class="catalog-card__footer"><span class="tag tag--' + color + '">' + escapeHTML(item.category) + '</span><span>' + escapeHTML(rightMeta) + '</span></div>' +
+    '</a>'
+  );
+}
+
 // ==========================================================================
 // Writing index (writing.html)
 // ==========================================================================
@@ -45,16 +79,7 @@ function renderArticles(list) {
   container.innerHTML = list
     .slice()
     .sort((a, b) => (a.sortDate < b.sortDate ? 1 : -1))
-    .map(function (a) {
-      return (
-        '<a class="catalog-card" href="' + escapeHTML(a.href) + '">' +
-          '<div class="catalog-card__meta"><span class="catalog-card__id">' + escapeHTML(a.id) + '</span><span>' + escapeHTML(a.date) + '</span></div>' +
-          '<h3 class="catalog-card__title">' + escapeHTML(a.title) + '</h3>' +
-          '<p class="catalog-card__desc">' + escapeHTML(a.description) + '</p>' +
-          '<div class="catalog-card__footer"><span class="tag tag--green">' + escapeHTML(a.category) + '</span><span>' + escapeHTML(a.readTime) + '</span></div>' +
-        '</a>'
-      );
-    })
+    .map((a) => cardTemplate(a, { footerRight: (x) => x.readTime }))
     .join("");
 }
 
@@ -105,16 +130,7 @@ function renderProjects(list) {
   container.innerHTML = list
     .slice()
     .sort((a, b) => (a.sortDate < b.sortDate ? 1 : -1))
-    .map(function (p) {
-      return (
-        '<a class="catalog-card" href="' + escapeHTML(p.href) + '">' +
-          '<div class="catalog-card__meta"><span class="catalog-card__id">' + escapeHTML(p.id) + '</span><span>' + escapeHTML(p.date) + '</span></div>' +
-          '<h3 class="catalog-card__title">' + escapeHTML(p.title) + '</h3>' +
-          '<p class="catalog-card__desc">' + escapeHTML(p.description) + '</p>' +
-          '<div class="catalog-card__footer"><span class="tag tag--gold">' + escapeHTML(p.category) + '</span><span>' + escapeHTML(p.role) + '</span></div>' +
-        '</a>'
-      );
-    })
+    .map((p) => cardTemplate(p, { footerRight: (x) => x.role }))
     .join("");
 }
 
@@ -151,25 +167,21 @@ function initProjectsPage() {
 }
 
 // ==========================================================================
-// Homepage — featured writing + currently exploring
+// Homepage — featured writing + recent projects
 // ==========================================================================
 function initHomePage() {
   const featured = document.getElementById("home-featured-articles");
   if (featured && typeof ARTICLES !== "undefined") {
     const items = ARTICLES.slice().sort((a, b) => (a.sortDate < b.sortDate ? 1 : -1)).slice(0, 3);
-    featured.innerHTML = items
-      .map(function (a) {
-        return (
-          '<a class="catalog-card" href="' + escapeHTML(a.href) + '">' +
-            '<div class="catalog-card__meta"><span class="catalog-card__id">' + escapeHTML(a.id) + '</span><span>' + escapeHTML(a.date) + '</span></div>' +
-            '<h3 class="catalog-card__title">' + escapeHTML(a.title) + '</h3>' +
-            '<p class="catalog-card__desc">' + escapeHTML(a.description) + '</p>' +
-            '<div class="catalog-card__footer"><span class="tag tag--green">' + escapeHTML(a.category) + '</span><span>' + escapeHTML(a.readTime) + '</span></div>' +
-          '</a>'
-        );
-      })
-      .join("");
+    featured.innerHTML = items.map((a) => cardTemplate(a, { footerRight: (x) => x.readTime })).join("");
   }
+}
+
+function initHomeProjects() {
+  const container = document.getElementById("home-recent-projects");
+  if (!container || typeof PROJECTS === "undefined") return;
+  const items = PROJECTS.slice().sort((a, b) => (a.sortDate < b.sortDate ? 1 : -1)).slice(0, 2);
+  container.innerHTML = items.map((p) => cardTemplate(p, { footerRight: (x) => x.role })).join("");
 }
 
 // ==========================================================================
@@ -219,24 +231,50 @@ function initReadingPage() {
 }
 
 // ==========================================================================
-// Projects grid on homepage (recent projects)
+// Scroll reveal — subtle fade + rise as sections and cards enter view.
+// Runs after the data-driven sections above have rendered their content,
+// so freshly-injected cards get tagged too.
 // ==========================================================================
-function initHomeProjects() {
-  const container = document.getElementById("home-recent-projects");
-  if (!container || typeof PROJECTS === "undefined") return;
-  const items = PROJECTS.slice().sort((a, b) => (a.sortDate < b.sortDate ? 1 : -1)).slice(0, 2);
-  container.innerHTML = items
-    .map(function (p) {
-      return (
-        '<a class="catalog-card" href="' + escapeHTML(p.href) + '">' +
-          '<div class="catalog-card__meta"><span class="catalog-card__id">' + escapeHTML(p.id) + '</span><span>' + escapeHTML(p.date) + '</span></div>' +
-          '<h3 class="catalog-card__title">' + escapeHTML(p.title) + '</h3>' +
-          '<p class="catalog-card__desc">' + escapeHTML(p.description) + '</p>' +
-          '<div class="catalog-card__footer"><span class="tag tag--gold">' + escapeHTML(p.category) + '</span><span>' + escapeHTML(p.role) + '</span></div>' +
-        '</a>'
-      );
-    })
-    .join("");
+function initScrollReveal() {
+  if (!("IntersectionObserver" in window)) return;
+
+  const groupSelectors = [
+    ".catalog-grid",
+    ".interest-list",
+    ".exploring",
+    ".timeline",
+    ".book-grid",
+    ".contact-list"
+  ];
+
+  groupSelectors.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (group) {
+      Array.from(group.children).forEach(function (child, i) {
+        child.classList.add("reveal");
+        child.style.setProperty("--reveal-delay", Math.min(i, 5) * 70 + "ms");
+      });
+    });
+  });
+
+  document.querySelectorAll(".section-head, .page-head > *, .cv-panel").forEach(function (el) {
+    el.classList.add("reveal");
+  });
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  document.querySelectorAll(".reveal").forEach(function (el) {
+    observer.observe(el);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -246,4 +284,5 @@ document.addEventListener("DOMContentLoaded", function () {
   initProjectsPage();
   initExperiencePage();
   initReadingPage();
+  initScrollReveal();
 });
